@@ -6,3 +6,5 @@ create user model
 mix phoenix.gen.model User users email:string name:string password_hash:string is_admin:boolean
 
 rake db:migrate ->  mix ecto.migrate
+
+rails s -> mix phoenix.server
