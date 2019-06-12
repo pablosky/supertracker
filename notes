@@ -8,3 +8,19 @@ mix phoenix.gen.model User users email:string name:string password_hash:string i
 rake db:migrate ->  mix ecto.migrate
 
 rails s -> mix phoenix.server
+
+
+login -> create, user (registration) (new, create, show)
+      -> session handling (new, create, delete)
+
+  defmodule Math do
+
+    def sum(x) do
+      x + 0
+    end
+
+    def sum(x, y) do
+      x + y
+    end
+  end
+  So in this you have two similar yet different functions: sum/1 and sum/2.
