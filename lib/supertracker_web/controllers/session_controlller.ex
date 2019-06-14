@@ -22,8 +22,8 @@ defmodule SupertrackerWeb.SessionController do
       {:error, :unauthorized, conn}
     # otherwise
     true ->
+      dummy_checkpw()
       # simulate check password hash timing
-      dummy_checkpw
       {:error, :not_found, conn}
     end
     case result do
