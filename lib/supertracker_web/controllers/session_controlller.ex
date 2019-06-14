@@ -9,22 +9,22 @@ defmodule SupertrackerWeb.SessionController do
   end
 
   def create(conn, %{"session" => %{"email" => email, "password" => password}}) do
-  # try to get user by unique email from DB
-  user = Supertracker.Repo.get_by(User, email: email)
-  # examine the result
-  result = cond do
-    # if user was found and provided password hash equals to stored
-    # hash
-    user && checkpw(password, user.password_hash) ->
-      {:ok, login(conn, user)}
-    # else if we just found the user
-    user ->
-      {:error, :unauthorized, conn}
-    # otherwise
-    true ->
-      dummy_checkpw()
-      # simulate check password hash timing
-      {:error, :not_found, conn}
+    # try to get user by unique email from DB
+    user = Supertracker.Repo.get_by(User, email: email)
+    # examine the result
+    result = cond do
+      # if user was found and provided password hash equals to stored
+      # hash
+      user && checkpw(password, user.password_hash) ->
+        {:ok, login(conn, user)}
+      # else if we just found the user
+      user ->
+        {:error, :unauthorized, conn}
+      # otherwise
+      true ->
+        dummy_checkpw()
+        # simulate check password hash timing
+        {:error, :not_found, conn}
     end
     case result do
       {:ok, conn} ->
@@ -41,6 +41,7 @@ defmodule SupertrackerWeb.SessionController do
   defp login(conn, user) do
     conn
     |> Guardian.Plug.sign_in(user)
+    |> put_flash(:info, "You’re now logged in!")
     |> redirect(to: page_path(conn, :index))
   end
 
