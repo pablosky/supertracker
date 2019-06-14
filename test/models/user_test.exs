@@ -1,5 +1,5 @@
 defmodule Supertracker.UserTest do
-  use Supertracker.ModelCase
+  use Supertracker.DataCase
 
   alias Supertracker.User
 
