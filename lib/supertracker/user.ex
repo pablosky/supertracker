@@ -2,7 +2,6 @@ defmodule Supertracker.User do
   #use SupertrackerWeb, :model
   use Ecto.Schema
   import Ecto.Changeset
-  alias Supertracker.User
 
   schema "users" do
     field :email, :string
@@ -30,6 +29,7 @@ defmodule Supertracker.User do
      struct
      |> changeset(params)
      |> cast(params, ~w(password)a, [])
+     |> unique_constraint(:email)
      |> validate_length(:password, min: 6, max: 100)
      |> hash_password
    end
