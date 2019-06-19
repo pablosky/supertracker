@@ -24,3 +24,7 @@ login -> create, user (registration) (new, create, show)
     end
   end
   So in this you have two similar yet different functions: sum/1 and sum/2.
+
+
+after 10 years coding has become boring for me, it will become for you too
+what if we make it fun for everyone 
