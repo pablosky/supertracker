@@ -6,12 +6,13 @@ defmodule SupertrackerWeb.UserControllerTest do
     assert html_response(conn, 200)
   end
 
+  @params %{
+    email: "user@example.com",
+    username: "username",
+    password: "password",
+  }
+
   describe "#create" do
-    @params %{
-      email: "user@example.com",
-      username: "username",
-      password: "password",
-    }
 
     test 'POST /users', %{conn: conn} do
       conn = post conn, "/users", [user: @params]
@@ -19,6 +20,13 @@ defmodule SupertrackerWeb.UserControllerTest do
       assert redirected_to(conn) == "/users/#{inspect user.id}"
       assert user.email == "user@example.com"
     end
+  end
+
+  test 'GET /user/show', %{conn: conn} do
+    post conn, "/users", [user: @params]
+    user = get_last_user()
+    conn = get conn, "/users/#{inspect user.id}"
+    assert html_response(conn, 200)
   end
 
   defp get_last_user do
