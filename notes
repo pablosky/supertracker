@@ -9,6 +9,8 @@ rake db:migrate ->  mix ecto.migrate
 
 rails s -> mix phoenix.server
 
+rails routes -> mix phx.routes
+
 
 login -> create, user (registration) (new, create, show)
       -> session handling (new, create, delete)
@@ -27,4 +29,4 @@ login -> create, user (registration) (new, create, show)
 
 
 after 10 years coding has become boring for me, it will become for you too
-what if we make it fun for everyone 
+what if we make it fun for everyone
