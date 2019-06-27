@@ -22,11 +22,9 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:user_id]
 
-config :guardian, Guardian,
+config :supertracker, Supertracker.Auth.Guardian,
  issuer: "SupertrackerWeb.#{Mix.env}",
  ttl: {30, :days},
- verify_issuer: true,
- serializer: SupertrackerWeb.GuardianSerializer,
  secret_key: to_string(Mix.env) <> "SuPerseCret_aBraCadabrA"
 
 # Import environment specific config. This must remain at the bottom

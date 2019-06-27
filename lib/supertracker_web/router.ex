@@ -18,8 +18,7 @@ defmodule SupertrackerWeb.Router do
   # (it makes Guardian.Plug.current_resource(conn) function works).
 
   pipeline :with_session do
-    plug Guardian.Plug.VerifySession
-    plug Guardian.Plug.LoadResource
+    plug Supertracker.Auth.Pipeline
     plug SupertrackerWeb.CurrentUser
   end
 
@@ -31,8 +30,4 @@ defmodule SupertrackerWeb.Router do
     resources "/sessions", SessionController, only: [:new, :create, :delete]
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", SupertrackerWeb do
-  #   pipe_through :api
-  # end
 end

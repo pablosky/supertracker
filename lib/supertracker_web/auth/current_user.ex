@@ -5,6 +5,9 @@ defmodule SupertrackerWeb.CurrentUser do
   def init(opts), do: opts
   def call(conn, _opts) do
     current_user = current_resource(conn)
+    if current_user do
+      IO.puts "user is: #{inspect current_user.email}"
+    end
     assign(conn, :current_user, current_user)
   end
 end

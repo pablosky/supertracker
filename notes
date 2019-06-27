@@ -11,6 +11,10 @@ rails s -> mix phoenix.server
 
 rails routes -> mix phx.routes
 
+like byebug
+  require IEx; IEx.pry
+  run iex -S mix test
+
 
 login -> create, user (registration) (new, create, show)
       -> session handling (new, create, delete)
