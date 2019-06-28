@@ -16,7 +16,7 @@ defmodule SupertrackerWeb.SessionControllerTest do
         password: "password",
       }
       {:ok, user} = create_user()
-      post conn, "/sessions", [session: session_params]
+      conn = post conn, "/sessions", [session: session_params]
       assert redirected_to(conn) == "/users/#{inspect user.id}"
     end
   end

@@ -6,7 +6,5 @@ defmodule Supertracker.Auth.Pipeline do
 
   plug Guardian.Plug.VerifySession
 
-  #plug Guardian.Plug.EnsureAuthenticated
-
-  plug Guardian.Plug.LoadResource, allow_blank: true #to avoid lots of redirects
+  plug Guardian.Plug.LoadResource, allow_blank: true
 end
